@@ -53,10 +53,10 @@
     "watch:labextension": "jupyter labextension watch ."
   },
   "dependencies": {
-    "@jupyterlab/application": "^3.1.0",
+    "@jupyterlab/application": "^3.3.4",
+    "@jupyterlab/apputils": "^3.3.4",
     "@jupyterlab/coreutils": "^5.1.0",
     "@jupyterlab/services": "^6.1.0"
-
   },
   "devDependencies": {
     "@jupyterlab/builder": "^3.1.0",
@@ -84,16 +84,16 @@
   "publishConfig": {
     "access": "public"
   },
-  "jupyterlab": { 
+  "jupyterlab": {
     "discovery": {
-        "server": {
-          "managers": [
-            "pip"
-          ],
-          "base": {
-            "name": "pyfibre_jupyterlab"
-          }
+      "server": {
+        "managers": [
+          "pip"
+        ],
+        "base": {
+          "name": "pyfibre_jupyterlab"
         }
+      }
     },
     "extension": true,
     "outputDir": "pyfibre_jupyterlab/labextension"
