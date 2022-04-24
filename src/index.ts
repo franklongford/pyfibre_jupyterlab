@@ -6,13 +6,13 @@ import {
 import { requestAPI } from './handler';
 
 /**
- * Initialization data for the pyfibre_lab extension.
+ * Initialization data for the pyfibre_jupyterlab extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'pyfibre_lab:plugin',
+  id: 'pyfibre_jupyterlab:plugin',
   autoStart: true,
   activate: (app: JupyterFrontEnd) => {
-    console.log('JupyterLab extension pyfibre_lab is activated!');
+    console.log('JupyterLab extension pyfibre_jupyterlab is activated!');
 
     requestAPI<any>('get_example')
       .then(data => {
@@ -20,7 +20,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       })
       .catch(reason => {
         console.error(
-          `The pyfibre_lab server extension appears to be missing.\n${reason}`
+          `The pyfibre_jupyterlab server extension appears to be missing.\n${reason}`
         );
       });
   }

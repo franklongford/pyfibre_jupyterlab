@@ -8,7 +8,7 @@ include install.json
 include ts*.json
 include yarn.lock
 
-graft pyfibre_lab/labextension
+graft pyfibre_jupyterlab/labextension
 
 # Javascript files
 graft src

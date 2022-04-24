@@ -1,5 +1,5 @@
 {
-  "name": "pyfibre_lab",
+  "name": "pyfibre_jupyterlab",
   "version": "0.1.0",
   "description": "Jupyterlab extensioon for PyFibre analysis",
   "keywords": [
@@ -36,7 +36,7 @@
     "clean": "jlpm clean:lib",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "clean:lintcache": "rimraf .eslintcache .stylelintcache",
-    "clean:labextension": "rimraf pyfibre_lab/labextension",
+    "clean:labextension": "rimraf pyfibre_jupyterlab/labextension",
     "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
     "eslint": "jlpm eslint:check --fix",
     "eslint:check": "eslint . --cache --ext .ts,.tsx",
@@ -91,12 +91,12 @@
             "pip"
           ],
           "base": {
-            "name": "pyfibre_lab"
+            "name": "pyfibre_jupyterlab"
           }
         }
     },
     "extension": true,
-    "outputDir": "pyfibre_lab/labextension"
+    "outputDir": "pyfibre_jupyterlab/labextension"
   },
   "jupyter-releaser": {
     "hooks": {

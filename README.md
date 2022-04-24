@@ -1,10 +1,10 @@
-# pyfibre_lab
+# pyfibre_jupyterlab
 
 [![Github Actions Status](https://github.com/franklongford/pyfibre_jupyterlab/workflows/Build/badge.svg)](https://github.com/franklongford/pyfibre_jupyterlab/actions/workflows/build.yml)
 Jupyterlab extensioon for PyFibre analysis
 
-This extension is composed of a Python package named `pyfibre_lab`
-for the server extension and a NPM package named `pyfibre_lab`
+This extension is composed of a Python package named `pyfibre_jupyterlab`
+for the server extension and a NPM package named `pyfibre_jupyterlab`
 for the frontend extension.
 
 ## Requirements
@@ -16,7 +16,7 @@ for the frontend extension.
 To install the extension, execute:
 
 ```bash
-pip install pyfibre_lab
+pip install pyfibre_jupyterlab
 ```
 
 ## Uninstall
@@ -24,7 +24,7 @@ pip install pyfibre_lab
 To remove the extension, execute:
 
 ```bash
-pip uninstall pyfibre_lab
+pip uninstall pyfibre_jupyterlab
 ```
 
 ## Troubleshoot
@@ -55,13 +55,13 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the pyfibre_lab directory
+# Change directory to the pyfibre_jupyterlab directory
 # Install package in development mode
 pip install -e .
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
 # Server extension must be manually installed in develop mode
-jupyter server extension enable pyfibre_lab
+jupyter server extension enable pyfibre_jupyterlab
 # Rebuild extension Typescript source after making changes
 jlpm build
 ```
@@ -87,13 +87,13 @@ jupyter lab build --minimize=False
 
 ```bash
 # Server extension must be manually disabled in develop mode
-jupyter server extension disable pyfibre_lab
-pip uninstall pyfibre_lab
+jupyter server extension disable pyfibre_jupyterlab
+pip uninstall pyfibre_jupyterlab
 ```
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `pyfibre_lab` within that folder.
+folder is located. Then you can remove the symlink named `pyfibre_jupyterlab` within that folder.
 
 ### Packaging the extension
 

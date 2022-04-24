@@ -1,7 +1,7 @@
 {
   "NotebookApp": {
     "nbserver_extensions": {
-      "pyfibre_lab": true
+      "pyfibre_jupyterlab": true
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "ServerApp": {
     "jpserver_extensions": {
-      "pyfibre_lab": true
+      "pyfibre_jupyterlab": true
     }
   }
 }
