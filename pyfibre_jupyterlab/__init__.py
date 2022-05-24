@@ -5,7 +5,6 @@ from ._version import __version__
 from .handlers import setup_handlers
 
 
-
 HERE = Path(__file__).parent.resolve()
 
 
@@ -18,7 +17,6 @@ def _jupyter_labextension_paths():
         "src": "labextension",
         "dest": data["name"]
     }]
-
 
 
 def _jupyter_server_extension_points():
