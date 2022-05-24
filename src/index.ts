@@ -4,45 +4,63 @@ import {
 } from '@jupyterlab/application';
 
 import { ICommandPalette, MainAreaWidget } from '@jupyterlab/apputils';
+import { ILauncher } from '@jupyterlab/launcher';
+import { LabIcon } from '@jupyterlab/ui-components';
 
-import { Widget } from '@lumino/widgets';
+import PyFibreSvgstr from '../style/pyfibre-icon.svg';
 
 import { requestAPI } from './handler';
+import { PyFibreWidget } from './widget';
 
 /**
  * Initialization data for the pyfibre_jupyterlab extension.
  */
 
+const PyFibreIcon = new LabIcon({
+  name: 'pyfibre_jupyterlab:icon',
+  svgstr: PyFibreSvgstr
+});
+
+
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'pyfibre_jupyterlab:plugin',
   autoStart: true,
-  requires: [ICommandPalette],
-  activate: (app: JupyterFrontEnd, palette: ICommandPalette) => {
+  requires: [ICommandPalette, ILauncher],
+  activate: (app: JupyterFrontEnd, palette: ICommandPalette, launcher: ILauncher) => {
     console.log('JupyterLab extension pyfibre_jupyterlab is activated!');
-
-    // Create a blank content widget inside of a MainAreaWidget
-    const content = new Widget();
-    const widget = new MainAreaWidget({ content });
-    widget.id = 'pyfibre-jupyterlab';
-    widget.title.label = 'PyFibre Picture';
-    widget.title.closable = true;
 
     // Add an application command
     const command: string = 'pyfibre:open';
     app.commands.addCommand(command, {
-      label: 'PyFibre Logo',
+      label: 'PyFibre',
+      icon: args => args['isPalette'] ? undefined : PyFibreIcon,
       execute: () => {
+        const content = new PyFibreWidget();
+        const widget = new MainAreaWidget<PyFibreWidget>({ content });
+        widget.id = 'pyfibre-jupyterlab';
+        widget.title.label = 'PyFibre';
+        widget.title.icon = PyFibreIcon;
+        widget.title.closable = true;
         if (!widget.isAttached) {
           // Attach the widget to the main work area if it's not there
           app.shell.add(widget, 'main');
         }
         // Activate the widget
         app.shell.activateById(widget.id);
-      }
+      },
     });
 
     // Add the command to the palette.
     palette.addItem({ command, category: 'Tutorial' });
+
+    // Add the command to the launcher
+    if (launcher) {
+      launcher.add({
+        command,
+        category: 'Extension Examples',
+        rank: 1,
+      });
+    }
 
     requestAPI<any>('get_example')
       .then(data => {
