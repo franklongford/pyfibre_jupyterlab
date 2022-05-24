@@ -21,19 +21,22 @@ const PyFibreIcon = new LabIcon({
   svgstr: PyFibreSvgstr
 });
 
-
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'pyfibre_jupyterlab:plugin',
   autoStart: true,
   requires: [ICommandPalette, ILauncher],
-  activate: (app: JupyterFrontEnd, palette: ICommandPalette, launcher: ILauncher) => {
+  activate: (
+    app: JupyterFrontEnd,
+    palette: ICommandPalette,
+    launcher: ILauncher
+  ) => {
     console.log('JupyterLab extension pyfibre_jupyterlab is activated!');
 
     // Add an application command
-    const command: string = 'pyfibre:open';
+    const command = 'pyfibre:open';
     app.commands.addCommand(command, {
       label: 'PyFibre',
-      icon: args => args['isPalette'] ? undefined : PyFibreIcon,
+      icon: args => (args['isPalette'] ? undefined : PyFibreIcon),
       execute: () => {
         const content = new PyFibreWidget();
         const widget = new MainAreaWidget<PyFibreWidget>({ content });
@@ -47,7 +50,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
         }
         // Activate the widget
         app.shell.activateById(widget.id);
-      },
+      }
     });
 
     // Add the command to the palette.
@@ -58,7 +61,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       launcher.add({
         command,
         category: 'Extension Examples',
-        rank: 1,
+        rank: 1
       });
     }
 
