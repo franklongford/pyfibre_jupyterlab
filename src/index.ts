@@ -25,7 +25,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   id: 'pyfibre_jupyterlab:plugin',
   autoStart: true,
   requires: [ICommandPalette, ILauncher],
-  activate: (
+  activate: async (
     app: JupyterFrontEnd,
     palette: ICommandPalette,
     launcher: ILauncher
@@ -65,7 +65,23 @@ const plugin: JupyterFrontEndPlugin<void> = {
       });
     }
 
-    requestAPI<any>('get_example')
+    // GET request
+    await requestAPI<any>('get_example')
+      .then(data => {
+        console.log(data);
+      })
+      .catch(reason => {
+        console.error(
+          `The pyfibre_jupyterlab server extension appears to be missing.\n${reason}`
+        );
+      });
+
+    // POST request
+    const dataToSend = { name: 'Frank' };
+    await requestAPI<any>('get_example', {
+      body: JSON.stringify(dataToSend),
+      method: 'POST'
+    })
       .then(data => {
         console.log(data);
       })
